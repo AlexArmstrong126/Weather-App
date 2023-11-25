@@ -12,7 +12,6 @@ import wind_icon from "../assets/wind.png";
 export default function Weatherapp() {
   const [weatherInfo, setWeatherInfo] = useState();
   const [wIcon, setWIcon] = useState();
-  let apiKey = "25dd2ff60ce4dd2a41afa96a5fe4568c";
 
   const displayIcon = (icon) => {
     switch (icon) {
@@ -44,7 +43,7 @@ export default function Weatherapp() {
 
   const fetchInfo = async (element) => {
     let weather = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${element}&units=Metric&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${element}&units=Metric&appid=${process.env.REACT_APP_SECRET_API_KEY}`
     );
     let weather_data = await weather.json();
     setWeatherInfo(weather_data);
